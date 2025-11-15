@@ -1,0 +1,40 @@
+﻿@model BackEnd_S2_L5_MVC.ViewModel.ScarpaListaViewModel
+@{
+}
+
+
+
+<p class="text-center fst-italic fw-light  text-decoration-underline m-4 fs-2">I nostri prodotti</p>
+    @if(Model.ScarpaLista.Count == 0)
+    {
+        Console.WriteLine("Nessun articolo trovato");
+        <p>Nessun articolo trovato</p>
+    }
+    else
+    {
+        <div class="row">
+            @foreach(var scarpa in Model.ScarpaLista)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                        <img src="@scarpa.ImmagineCopertina" class="card-img-top" alt="@scarpa.Nome" style="height: 225px; object-fit: contain;">
+
+                        <div class="card-body">
+                        <h3 class="card-title fst-italic fw-light"> @scarpa.Nome</h3>
+                        <p class="card-text fs-4 fst-italic fw-light">Prezzo: @scarpa.Prezzo</p>
+                        <button type="button" class="btn btn-light btn-outline-dark">  <a class="nav-link text-black fst-italic fw-bold" asp-controller="Scarpa" asp-action="Dettaglio" asp-route-id="@scarpa.Id">Dettaglio</a></button>
+
+
+                        </div>
+                    
+               </div>
+            </div>
+            
+        
+        
+        }
+        </div>
+
+        }
+             
+
